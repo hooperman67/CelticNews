@@ -1,13 +1,13 @@
-name: Fetch new blog feeds and push content to Github Pages
+name: Fetch new videos and push content to Github Pages
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
     paths:
       - 'youtube.php'
-      - 'tvhighlights.php'
+      
   schedule:
-    - cron: '0 */4 * * *'  # Runs every 2 hrs
+    - cron: '0 */4 * * *'  # Runs every 4 hrs
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -48,7 +48,6 @@ jobs:
       
       - name: Run news
         run: php youtube.php
-             php tvhighlights.php
       
       - name: Commit files
         run: |
