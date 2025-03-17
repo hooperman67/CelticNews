@@ -72,7 +72,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: unique-artifact-name-${{ github.run_id }}
+          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
           path: './public'
 
       - name: Deploy to GitHub Pages
@@ -148,7 +148,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: unique-artifact-name-${{ github.run_id }}
+          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
           path: './public'
 
       - name: Deploy to GitHub Pages
@@ -186,7 +186,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: unique-artifact-name-${{ github.run_id }}
+          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
           path: './public'
 
       - name: Deploy to GitHub Pages
@@ -224,6 +224,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
           path: './public'
 
       - name: Deploy to GitHub Pages
