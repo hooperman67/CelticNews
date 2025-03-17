@@ -65,8 +65,10 @@ foreach ($blogs_feed->get_items(0, 20) as $item) {
     // Extracting thumbnail from srcset attribute
     $thumbnail = '';
     $content = $item->get_content();
+    libxml_use_internal_errors(true);
     $doc = new DOMDocument();
     $doc->loadHTML($content);
+    libxml_clear_errors();
     $xpath = new DOMXPath($doc);
     $srcset = $xpath->evaluate("string(//img/@srcset)");
 
@@ -108,7 +110,10 @@ foreach ($blogs_feed->get_items(0, 20) as $item) {
                // Assign default thumbnail if no image URL found in <content:encoded> tag
                 if (empty($thumbnail)) {
                     $thumbnail = 'images/craic.webp';
-                }
+                } else {
+    // Handle the missing file case here
+    error_log("Image file not found: " . $imagePath);
+}
                 
         // Use getimagesize to get the image dimensions
         list($width, $height) = getimagesize($thumbnail);
