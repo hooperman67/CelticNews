@@ -70,8 +70,9 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
+          name: unique-artifact-name-${{ github.run_id }}
           path: './public'
 
       - name: Deploy to GitHub Pages
@@ -107,8 +108,9 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
+          name: unique-artifact-name-${{ github.run_id }}
           path: './public'
 
       - name: Deploy to GitHub Pages
@@ -144,8 +146,9 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
+          name: unique-artifact-name-${{ github.run_id }}
           path: './public'
 
       - name: Deploy to GitHub Pages
@@ -181,8 +184,9 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
+          name: unique-artifact-name-${{ github.run_id }}
           path: './public'
 
       - name: Deploy to GitHub Pages
