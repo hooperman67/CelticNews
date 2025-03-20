@@ -41,7 +41,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy_blogs:
+  deploy_rss_blogs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -78,7 +78,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_podcasts:
+  deploy_rss_podcasts:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -115,7 +115,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_news:
+  deploy_rss_news:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -152,7 +152,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_tvhighlights:
+  deploy_rss_tvhighlights:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -189,7 +189,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_vids:
+  deploy_rss_vids:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
