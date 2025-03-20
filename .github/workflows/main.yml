@@ -1,6 +1,7 @@
-name: Fetch rss feeds and push content to Github Pages
+name: Fetch feeds and push content to Github Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
     paths:
@@ -10,13 +11,15 @@ on:
       - 'tvhighlights.php'
       - 'youtube.php'
   schedule:
-    - cron: '0 */2 * * *'
-    - cron: '0 */5 * * *'
-    - cron: '0 */1 * * *'
-    - cron: '0 */6 * * *'
-    - cron: '0 */4 * * *'
+    - cron: '0 */2 * * *'  # Runs every 2 hrs for blogs
+    - cron: '0 */5 * * *'  # Runs every 5 hrs for podcasts
+    - cron: '0 */1 * * *'  # Runs every 1 hrs for news
+    - cron: '0 */5 * * *'  # Runs every 5 hrs for TV highlights
+    - cron: '0 */4 * * *'  # Runs every 4 hrs for videos
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN
 permissions:
   id-token: write
   contents: write
@@ -32,12 +35,13 @@ permissions:
   security-events: write
   statuses: write
 
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  deploy_rss_blogs:
+  deploy_blogs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -66,16 +70,15 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          name: 'artifact-${{ github.run_id }}'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_rss_podcasts:
+  deploy_podcasts:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -104,16 +107,15 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          name: 'artifact-${{ github.run_id }}'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_rss_news:
+  deploy_news:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -142,16 +144,15 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          name: 'artifact-${{ github.run_id }}'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_rss_tvhighlights:
+  deploy_tvhighlights:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -180,16 +181,15 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          name: 'artifact-${{ github.run_id }}'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy_rss_vids:
+  deploy_vids:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -218,10 +218,9 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          name: 'artifact-${{ github.run_id }}'
 
       - name: Deploy to GitHub Pages
         id: deployment
