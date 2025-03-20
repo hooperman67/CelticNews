@@ -70,7 +70,7 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: './public'
           name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run
@@ -108,7 +108,7 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: './public'
           name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run 
@@ -146,7 +146,7 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: './public'
           name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run 
@@ -184,7 +184,7 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: './public'
           name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run 
@@ -222,7 +222,7 @@ jobs:
           force: true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: './public'
           name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run
