@@ -73,7 +73,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          overwrite: true
+          name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -111,7 +111,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          overwrite: true 
+          name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run 
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -149,7 +149,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          overwrite: true 
+          name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run 
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -187,7 +187,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          overwrite: true 
+          name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run 
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -225,7 +225,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './public'
-          overwrite: true 
+          name: 'artifact-${{ github.run_id }}'  # Use a unique name for each run
 
       - name: Deploy to GitHub Pages
         id: deployment
