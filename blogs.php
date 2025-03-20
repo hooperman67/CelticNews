@@ -101,7 +101,7 @@ foreach ($items as $item) {
     $thumbnail = '';
     $content = $item->get_content();
     @$doc = new DOMDocument();
-    $doc->loadHTML($content);
+    @$doc->loadHTML($content);
     $xpath = new DOMXPath($doc);
     $srcset = $xpath->evaluate("string(//img/@srcset)");
 
