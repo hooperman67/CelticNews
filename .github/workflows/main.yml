@@ -1,4 +1,4 @@
-name: Fetch feeds and push content to Github Pages
+name: Fetch rss feeds and push content to Github Pages
 
 on:
   # Runs on pushes targeting the default branch
