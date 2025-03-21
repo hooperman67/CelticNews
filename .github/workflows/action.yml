@@ -43,7 +43,7 @@ concurrency:
 jobs:
   deploy_rss_blogs:
     environment:
-      name: github-pages
+      name: blog-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-20.04
     steps:
