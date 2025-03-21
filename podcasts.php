@@ -3,7 +3,6 @@ include_once('autoloader.php');
 
 $podcasts_rss = array(
     'https://www.spreaker.com/show/2287253/episodes/feed',
-    'https://feed.podbean.com/celtichuddlepodcast/feed.xml',
     'https://shows.acast.com/60e717946b59de00120e3e44',
     'https://feeds.acast.com/public/shows/5f208eec15e9d83c37daa234',
     'https://4tims.podomatic.com/rss2.xml',
