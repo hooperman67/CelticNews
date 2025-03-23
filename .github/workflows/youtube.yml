@@ -6,7 +6,7 @@ on:
     paths:
       - 'youtube.php'
   schedule:
-    - cron: '0 */4 * * *'  # Runs every 2 hrs
+    - cron: '0 0 * * *'  # Runs every 24 hrs
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
