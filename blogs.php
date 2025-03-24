@@ -164,6 +164,6 @@ $html_content .= "</div></div><script src='myscripts.js'></script></body></html>
 // Save to file
 file_put_contents('public/blogs.html', $html_content);
 
-echo "Results saved to <a href='public/index.html'>Blogs Page</a>";
+echo "Results saved to <a href='public/blogs.html'>Blogs Page</a>";
 ?>
 

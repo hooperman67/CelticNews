@@ -109,7 +109,7 @@ elseif ($item->get_feed()->get_image_url()) {
 
 // 3. If both fail, use a fallback
 else {
-    $thumb = 'fallback.jpg'; // Change this to your default image
+    $thumb = 'public/images/craic.webp'; // Change this to your default image
 }
 
         list($width, $height) = getimagesize($thumb);
@@ -138,8 +138,6 @@ $html_content .= "</div></div><script src='myscripts.js'></script></body></html>
 
 // Save to file
 file_put_contents('public/podcasts.html', $html_content);
-var_dump($image_tags);
-
 echo "Results saved to <a href='public/podcasts.html'>Podcasts Page</a>";
 ?>
        
