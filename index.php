@@ -46,13 +46,14 @@ $html_content = "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='canonical' href='https://hooperman67.github.io/CelticNews/index.html' />
     <title>RSS Feed Results</title>
+    <meta name='description' content='Celtic FC News and blogs -  made with php and SimplePie.'>
     <link rel='stylesheet' href='myminified.css'>
 </head>
 <body>
 <div style='overflow: hidden;height: 50px;'>
 <nav>
   <a href='https://armchaircelts.co.uk/' class='brand'>
-    <span>ArmchairCelts</span>
+    <span>Celtic FC News</span>
   </a>
 
   <input id='bmenub' type='checkbox' class='show'>
@@ -121,8 +122,8 @@ foreach ($items as $item) {
 $html_content .= "</div></div><script src='myscripts.js'></script></body></html>";
 
 // Save to file
-file_put_contents('public/index.html', $html_content);
+file_put_contents('docs/index.html', $html_content);
 
-echo "Results saved to <a href='public/index.html'>News Page</a>";
+echo "Results saved to <a href='docs/index.html'>News Page</a>";
 ?>
 
