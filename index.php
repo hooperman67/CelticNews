@@ -119,7 +119,7 @@ foreach ($items as $item) {
     $html_content .= "</article></div>";
 }
 
-$html_content .= "</div></div><script src='myscripts.js'></script></body></html>";
+$html_content .= "</div></div><script src='nav.js'></script></body></html>";
 
 // Save to file
 file_put_contents('docs/index.html', $html_content);
