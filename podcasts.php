@@ -67,6 +67,7 @@ $html_content = "<!DOCTYPE html>
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+     <link rel='canonical' href='https://hooperman67.github.io/CelticNews/podcasts.html' />
     <title>RSS Feed Results</title>
     <link rel='stylesheet' href='myminified.css'>
 </head>
@@ -134,11 +135,11 @@ else {
 
 }
 
-$html_content .= "</div></div><script src='myscripts.js'></script></body></html>";
+$html_content .= "</div></div><script src='nav.js'></script></body></html>";
 
 // Save to file
-file_put_contents('public/podcasts.html', $html_content);
-echo "Results saved to <a href='public/podcasts.html'>Podcasts Page</a>";
+file_put_contents('docs/podcasts.html', $html_content);
+echo "Results saved to <a href='docs/podcasts.html'>Podcasts Page</a>";
 ?>
        
 
