@@ -69,6 +69,7 @@ $html_content = "<!DOCTYPE html>
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+     <link rel='canonical' href='https://hooperman67.github.io/CelticNews/blogs.html' />
     <title>RSS Feed Results</title>
     <link rel='stylesheet' href='myminified.css'>
 </head>
@@ -159,11 +160,11 @@ foreach ($items as $item) {
     $html_content .= "</article></div>";
 }
 
-$html_content .= "</div></div><script src='myscripts.js'></script></body></html>";
+$html_content .= "</div></div><script src='nav.js'></script></body></html>";
 
 // Save to file
-file_put_contents('public/blogs.html', $html_content);
+file_put_contents('docs/blogs.html', $html_content);
 
-echo "Results saved to <a href='public/blogs.html'>Blogs Page</a>";
+echo "Results saved to <a href='docs/blogs.html'>Blogs Page</a>";
 ?>
 
