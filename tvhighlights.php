@@ -133,9 +133,9 @@ foreach ($filteredItems as $item) {
     $html_content .= "</article></div>";
 }
 
-$html_content .= "</div></div><script src='myscripts.js'></script></body></html>";
+$html_content .= "</div></div><script src='nav.js'></script></body></html>";
 // Save to file
-file_put_contents('public/tvhighlights.html', $html_content);
+file_put_contents('docs/tvhighlights.html', $html_content);
 
-echo "Results saved to <a href='public/tvhighlights.html'>tvhighlights Page</a>";
+echo "Results saved to <a href='docs/tvhighlights.html'>tvhighlights Page</a>";
 

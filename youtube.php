@@ -112,11 +112,11 @@ $thumb = $item->get_enclosure(0)->get_thumbnail();
     $html_content .= "</article></div>";
 }
 
-$html_content .= "</div></div><script src='myscripts.js'></script></body></html>";
+$html_content .= "</div></div><script src='nav.js'></script></body></html>";
 
 // Save to file
-file_put_contents('public/youtube.html', $html_content);
+file_put_contents('docs/youtube.html', $html_content);
 
-echo "Results saved to <a href='public/youtube.html'>Youtube Page</a>";
+echo "Results saved to <a href='docs/youtube.html'>Youtube Page</a>";
 ?>
 
