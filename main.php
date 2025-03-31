@@ -151,10 +151,16 @@ foreach ($feeds as $type => $feed_urls) {
     
         // Extract srcset images
         $content = $item->get_content();
-        @$doc = new DOMDocument();
-        @$doc->loadHTML($content);
-        $xpath = new DOMXPath($doc);
-        $srcset = $xpath->evaluate("string(//img/@srcset)");
+        if (!empty($content)) {
+            @$doc = new DOMDocument();
+            @$doc->loadHTML($content);
+            $xpath = new DOMXPath($doc);
+            $srcset = $xpath->evaluate("string(//img/@srcset)");
+        } else {
+            // Handle empty content case, e.g., log an error or skip processing
+            echo "Content is empty for item: " . htmlspecialchars($item->get_title()) . "<br>";
+            continue;
+        }
     
         if (!empty($srcset)) {
             $sources = explode(',', $srcset);
@@ -200,6 +206,9 @@ foreach ($feeds as $type => $feed_urls) {
             if (!empty($image_tags) && isset($image_tags[0]['attribs']['']['href'])) {
                 $thumbnail = $image_tags[0]['attribs']['']['href'];
             }
+        } else {
+            echo "Content is empty for item: " . htmlspecialchars($item->get_title()) . "<br>";
+            continue;
         }
     
         // Check enclosure images if srcset & iTunes image are empty
