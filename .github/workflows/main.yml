@@ -1,21 +1,12 @@
-name: Fetch feeds and push content to Github Pages
-
+name: Fetch new feeds and push content to Github Pages
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
     paths:
-      - 'blogs.php'
-      - 'podcasts.php'
-      - 'index.php'
-      - 'tvhighlights.php'
-      - 'youtube.php'
+      - 'main.php'
   schedule:
-    - cron: '0 */2 * * *'  # Runs every 2 hrs for blogs
-    - cron: '0 */5 * * *'  # Runs every 5 hrs for podcasts
-    - cron: '0 */1 * * *'  # Runs every 1 hrs for news
-    - cron: '0 */5 * * *'  # Runs every 5 hrs for TV highlights
-    - cron: '0 */4 * * *'  # Runs every 4 hrs for videos
+    - cron: '0 */2 * * *'  # Runs every 2 hrs
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -41,192 +32,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy_blogs:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@v4  # Updated to v4
+      
       - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Run blogs
-        run: php blogs.php
-
+        uses: actions/configure-pages@v4  # Updated to v4
+      
+      - name: Run main.php
+        run: php main.php
+      
       - name: Commit files
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add --all
           git commit -m "Updating the repository" || echo "No changes to commit"
-
+      
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
-
+      
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3  # Updated to v3
         with:
-          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
-          path: './public'
-
+          path: './docs'
+      
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-
-  deploy_podcasts:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Run podcasts
-        run: php podcasts.php
-
-      - name: Commit files
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add --all
-          git commit -m "Updating the repository" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: unique-artifact-name-${{ github.run_id }}
-          path: './public'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  deploy_news:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Run news
-        run: php index.php
-
-      - name: Commit files
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add --all
-          git commit -m "Updating the repository" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
-          path: './public'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  deploy_tvhighlights:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Run TV highlights
-        run: php tvhighlights.php
-
-      - name: Commit files
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add --all
-          git commit -m "Updating the repository" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
-          path: './public'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  deploy_vids:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Run videos
-        run: php youtube.php
-
-      - name: Commit files
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add --all
-          git commit -m "Updating the repository" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: unique-artifact-name-${{ github.run_id }}-${{ github.sha }}
-          path: './public'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4  # Updated to v4
