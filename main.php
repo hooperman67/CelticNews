@@ -179,27 +179,6 @@ foreach ($feeds as $type => $feed_urls) {
         $thumbnail = '';
         $audio_url = '';
     
-        // Extract srcset images
-        $content = $item->get_content();
-        @$doc = new DOMDocument();
-        @$doc->loadHTML($content);
-        $xpath = new DOMXPath($doc);
-        $srcset = $xpath->evaluate("string(//img/@srcset)");
-    
-        if (!empty($srcset)) {
-            $sources = explode(',', $srcset);
-            foreach ($sources as $source) {
-                $parts = explode(' ', trim($source));
-                $url = trim($parts[0]);
-                $width = (int)trim($parts[1], 'w'); // Convert width to integer
-    
-                if ($width <= 600) {
-                    $thumbnail = $url;
-                    break;
-                }
-            }
-        }
-    
         // Check iTunes image first (to avoid assigning MP3 file as an image)
         if (empty($thumbnail)) {
             $image_tags = $item->get_item_tags(SIMPLEPIE_NAMESPACE_ITUNES, 'image');
