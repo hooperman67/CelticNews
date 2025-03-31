@@ -149,32 +149,28 @@ foreach ($feeds as $type => $feed_urls) {
         $thumbnail = '';
         $audio_url = '';
     
-        // Extract srcset images
-        $content = $item->get_content();
-        if (!empty($content)) {
-            @$doc = new DOMDocument();
-            @$doc->loadHTML($content);
-            $xpath = new DOMXPath($doc);
-            $srcset = $xpath->evaluate("string(//img/@srcset)");
-        } else {
-            // Handle empty content case, e.g., log an error or skip processing
-            echo "Content is empty for item: " . htmlspecialchars($item->get_title()) . "<br>";
-            continue;
-        }
-    
-        if (!empty($srcset)) {
-            $sources = explode(',', $srcset);
-            foreach ($sources as $source) {
-                $parts = explode(' ', trim($source));
-                $url = trim($parts[0]);
-                $width = (int)trim($parts[1], 'w'); // Convert width to integer
-    
-                if ($width <= 600) {
-                    $thumbnail = $url;
-                    break;
-                }
+$content = $item->get_content();
+
+if (!empty($content)) { // Ensure content is not empty before processing
+    @$doc = new DOMDocument();
+    @$doc->loadHTML($content);
+    $xpath = new DOMXPath($doc);
+    $srcset = $xpath->evaluate("string(//img/@srcset)");
+
+    if (!empty($srcset)) {
+        $sources = explode(',', $srcset);
+        foreach ($sources as $source) {
+            $parts = explode(' ', trim($source));
+            $url = trim($parts[0]);
+            $width = (int)trim($parts[1], 'w'); // Convert width to integer
+
+            if ($width <= 600) {
+                $thumbnail = $url;
+                break;
             }
         }
+    }
+}
     
         $thumbnail = '';
         $audio_url = '';
