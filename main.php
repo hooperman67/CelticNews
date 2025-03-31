@@ -73,7 +73,7 @@ foreach ($feeds as $type => $feed_urls) {
     $items = []; // Reset items for each category
 
     $html_content = "<html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>" . ucfirst($type) . " RSS Feed</title><link rel='stylesheet' href='css/style.css'>";
-    $html_content .= "<link rel='canonical' href='https://armchaircelts.co.uk/$type.html' /></head><body>";
+    $html_content .= "<link rel='canonical' href='https://github.com/hooperman67/CelticNews/$type.html' /></head><body>";
     
     
     $html_content .= "<div style='overflow: hidden;height: 50px;'>
