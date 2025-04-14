@@ -35,7 +35,7 @@
     <h1>Latest Celtic FC News</h1><div class='flex one two-600 four-1200 demo'>
     
       <div><span>    <!-- Use your bluesky profile handle -->
-<bsky-widget handle="armchaircelts.bsky.social"></bsky-widget></span></div>
+<bsky-widget handle="armchaircelts.co.uk"></bsky-widget></span></div>
   <div><span>This site is hosted for free on Github pages with 2 hourly updates of Celtic news,podcasts,videos and articles </span></div>
 <div>Celtic are one of the most popular football clubs globally and with that comes a huge demand for news and updates related to the club. We hope by choosing some of the most popular on line oulets and aggregating their news and stories on our site. We can help make sure our readership is kept up to date with daily Celtic News, match reports and transfers. Celtic News from the mainstream media,News and gossip from the Celtic blogging family.Enjoy a bit of craic from some of the best Celtic Podcasts.View Youtube Celtic Videos and watch mainstream highlights of some league and cup matches.</div>    
 
@@ -82,7 +82,7 @@
         loading: true,
         error: null,
         async fetchFeed() {
-          const feedUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://bsky.app/profile/armchaircelts.bsky.social/rss')}`; // Replace with your RSS feed URL
+          const feedUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://bsky.app/profile/did:plc:adnx4ibywklcddmmfnkcmbe6/rss')}`; // Replace with your RSS feed URL
           try {
             const response = await fetch(feedUrl);
             const data = await response.json();
